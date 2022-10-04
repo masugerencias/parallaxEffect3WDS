@@ -1,0 +1,74 @@
+body{
+    margin: 0;
+}
+
+.wrapper{
+    height: 100vh;
+    /* el contenedor que quremos que haga scroll, y no el body */
+    overflow-y: auto;
+    /* overflow es interesante... documentacion en: https://developer.mozilla.org/en-US/docs/Web/CSS/overflow */
+    overflow-x: hidden;
+    /* asi no se tienen las barras de desplazxamiento horizontales */
+    perspective: 10px;
+    /* PERSPECTIVE... RARA */
+}
+
+header {
+position: relative;
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100%;
+transform-style: preserve-3d;
+/* Si no sepone esto puede que vaya peor */
+z-index: -1;
+}
+
+
+
+
+.background,
+.foreground {
+
+position: absolute;
+height: 100%;
+width: 100%;
+object-fit: cover;
+/* Para que tenga el aspect ratio bien puesto */
+z-index: -1;
+
+
+}
+
+
+
+.background{
+    transform: translateZ(-10px) scale(2);
+    /* Alejamos el fondo con 10px siempre en relacion a la perspectiva 
+    que hemos puesto en el wrapper! 
+    Si lo pongo en negativo, se alejará mucho.
+    OBJETIVO: alejarla y hacerle "zoom" para que el scroll sea de algo 
+    lejano (lento) pero se vea en tamaño como de serie: -10px y se escla a 2.*/
+
+/* Hacer esto en los planos que quiera jugando con translateZ(3d) y con Scale. 
+Lo hago tambien con FOREGROUND */
+
+}
+
+.foreground{
+    transform: translateZ(-5px) scale(1.5);
+
+}
+
+.title{
+font-size: 7rem;
+color: white;
+text-shadow: 0 0 5px black;
+}
+
+section{
+    font-size: 2rem;
+    padding: 2rem;
+    background-color: #333;
+    color: white;
+}
